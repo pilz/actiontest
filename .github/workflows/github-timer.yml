@@ -28,4 +28,4 @@ jobs:
       with:
         PROJECT_ID: 1
         TIME_IN_MINUTES: 5
-        LABEL_NAME: review_time
+        LABEL_NAME: old
