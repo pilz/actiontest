@@ -1,4 +1,4 @@
-name: Example
+name: Example-test
 on: 
   workflow_dispatch:
   project_card:
