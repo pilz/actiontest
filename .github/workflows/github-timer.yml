@@ -1,2 +1,31 @@
 - name: Issue Timer
   uses: isethi/issue-timer@v0.1
+
+name: Example
+on: 
+  workflow_dispatch:
+  project_card:
+    types: [created, moved]
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '1.15.8'
+    - name: Example
+      uses: isethi/issue-timer@main
+      with:
+        PROJECT_ID: 1
+        TIME_IN_MINUTES: 5
+        LABEL_NAME: review_time
